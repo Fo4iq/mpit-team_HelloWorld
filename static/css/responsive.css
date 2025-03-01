@@ -1,0 +1,160 @@
+/* Общие стили для адаптивности */
+@media (max-width: 1200px) {
+    .page-kino,
+    .page-concerts,
+    .page-theatre,
+    .page-child,
+    .page-meetings {
+        padding: 2em !important;
+    }
+
+    .header-container {
+        flex-direction: column;
+        padding: 1em;
+    }
+
+    .middle-text-header {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 1em 0;
+    }
+
+    .razdelenie {
+        margin: 0 0.5em;
+    }
+
+    .textbtn {
+        margin: 0.5em;
+        font-size: 14px;
+    }
+
+    .auth-container-header {
+        margin-top: 1em;
+    }
+
+    .main-content {
+        margin: 1em !important;
+        max-width: calc(50% - 2em) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0.5em;
+    }
+
+    .right-text-header img {
+        max-width: 120px;
+    }
+
+    .middle-text-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .razdelenie {
+        display: none;
+    }
+
+    .textbtn {
+        margin: 0.3em;
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+        padding: 0.5em;
+    }
+
+    .auth-container-header {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .authbtn {
+        width: 100%;
+        margin: 0.3em 0;
+        text-align: center;
+    }
+
+    .main-content {
+        margin: 1em 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .sitename {
+        font-size: 40px !important;
+        margin: 0.5em 0 !important;
+    }
+
+    .obloga {
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: 300px !important;
+    }
+
+    .title {
+        font-size: 18px !important;
+    }
+
+    .descript {
+        font-size: 14px !important;
+    }
+
+    .buybtn {
+        width: 100% !important;
+        margin-top: 1em !important;
+    }
+}
+
+/* Стили для формы добавления */
+@media (max-width: 768px) {
+    .add-form-container {
+        width: 95% !important;
+        margin: 1em auto !important;
+        padding: 1em !important;
+    }
+
+    .form-group {
+        margin-bottom: 1em !important;
+    }
+
+    .form-control {
+        font-size: 14px !important;
+    }
+
+    .rating-group {
+        flex-wrap: wrap !important;
+    }
+
+    .rating-group label {
+        flex: 1 1 auto !important;
+        margin: 0.2em !important;
+    }
+
+    .home-btn {
+        position: static !important;
+        margin: 1em auto !important;
+        width: 95% !important;
+    }
+}
+
+/* Стили для главной страницы */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 1em !important;
+    }
+
+    .section-title {
+        font-size: 24px !important;
+        margin: 1em 0 !important;
+    }
+
+    .carousel-item img {
+        height: 200px !important;
+        object-fit: cover !important;
+    }
+
+    .category-section {
+        margin: 2em 0 !important;
+    }
+} 

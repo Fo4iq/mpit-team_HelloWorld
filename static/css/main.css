@@ -7,14 +7,52 @@
     background-color: rgb(23, 23, 23);
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 .carousel {
     margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+.carousel-inner {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-item {
+    height: 500px; /* Фиксированная высота для всех слайдов */
+    background-color: #000;
 }
 
 .carousel-item img {
-    border-radius: 10em;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Сохраняет пропорции и заполняет контейнер */
+    object-position: center; /* Центрирует изображение */
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.carousel-caption h5 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.carousel-caption p {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 0;
 }
 
 .actually {
@@ -22,4 +60,53 @@
     color: white;
     text-align: center;
     font-family: Montserrat-bold;
+}
+
+.no-items-message {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.no-items-message h2 {
+    color: #6c757d;
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Стили для кнопок карусели */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0.8;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 20px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 300px;
+    }
+
+    .carousel-caption {
+        position: relative;
+        background: #000;
+        padding: 15px;
+    }
+
+    .carousel-caption h5 {
+        font-size: 20px;
+    }
+
+    .carousel-caption p {
+        font-size: 14px;
+    }
 }

@@ -36,7 +36,7 @@
             <div class="middle-text-header">
                 <a href="{{ url_for('movies') }}" class="textbtn">Кино</a>
                 <div class="razdelenie"></div>
-                <a href="{{ url_for('koncert') }}" class="textbtn">Концерт</a>
+                <a href="{{ url_for('concerts') }}" class="textbtn">Концерт</a>
                 <div class="razdelenie"></div>
                 <a href="{{ url_for('theatre') }}" class="textbtn">Театр</a>
                 <div class="razdelenie"></div>
@@ -44,7 +44,7 @@
                 <div class="razdelenie"></div>
                 <a href="{{ url_for('child') }}" class="textbtn">Детям</a>
                 <div class="razdelenie"></div>
-                <a href="" class="textbtn">Еще&nbsp;&#709;</a>
+                <a href="{{ url_for('additems') }}" class="textbtn">Добавить</a>
             </div>
             <div class="auth-container-header">
                 <a href="https://id.ykt.ru/page/login?return_url=https%3A%2F%2Fafisha.ykt.ru%2F" class="authbtn logbtn">Войти</a>
@@ -53,7 +53,13 @@
         </div>
     </header>
     <main>
-        
+        <div class="card-container">
+            <img src="{{ item['url_image'] }}" alt="" class="obloga">
+            <div class="card-body">
+                <p class="title">{{ item['title'] }}</p>
+                <p class="descript">{{ item['description'] }}</p>
+            </div>
+        </div>
     </main>
 
 
