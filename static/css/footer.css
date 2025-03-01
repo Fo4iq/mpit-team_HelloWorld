@@ -1,0 +1,6 @@
+.footer-container {
+    margin-top: auto;
+    height: 5em;
+    width: 100;
+    background-image: url('../images/footer-label.png');
+}
