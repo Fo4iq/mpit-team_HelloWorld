@@ -316,42 +316,92 @@ def delete_item(request: Request, category: str, id: int):
 def cardm(request: Request, id: int):
     con = get_db()
     cur = con.cursor()
-    cur.execute('SELECT * FROM movies WHERE id = ?', (id,))
-    item = cur.fetchone()
-    return templates.TemplateResponse('card.html', {'request': request, 'item': item})
+    try:
+        cur.execute('SELECT * FROM movies WHERE id = ?', (id,))
+        item = cur.fetchone()
+        if item is None:
+            raise HTTPException(status_code=404, detail="Item not found")
+        return templates.TemplateResponse('card.html', {
+            'request': request,
+            'item': dict(item)
+        })
+    except sqlite3.Error as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        con.close()
 
 
 @app.get('/concert/{id}', response_class=HTMLResponse)
 def cardc(request: Request, id: int):
     con = get_db()
     cur = con.cursor()
-    cur.execute('SELECT * FROM concerts WHERE id = ?', (id,))
-    item = cur.fetchone()
-    return templates.TemplateResponse('card.html', {'request': request, 'item': item})
+    try:
+        cur.execute('SELECT * FROM concerts WHERE id = ?', (id,))
+        item = cur.fetchone()
+        if item is None:
+            raise HTTPException(status_code=404, detail="Item not found")
+        return templates.TemplateResponse('card.html', {
+            'request': request,
+            'item': dict(item)
+        })
+    except sqlite3.Error as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        con.close()
 
 @app.get('/theatre/{id}', response_class=HTMLResponse)
 def cardt(request: Request, id: int):
     con = get_db()
     cur = con.cursor()
-    cur.execute('SELECT * FROM theatre WHERE id = ?', (id,))
-    item = cur.fetchone()
-    return templates.TemplateResponse('card.html', {'request': request, 'item': item})
+    try:
+        cur.execute('SELECT * FROM theatre WHERE id = ?', (id,))
+        item = cur.fetchone()
+        if item is None:
+            raise HTTPException(status_code=404, detail="Item not found")
+        return templates.TemplateResponse('card.html', {
+            'request': request,
+            'item': dict(item)
+        })
+    except sqlite3.Error as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        con.close()
 
 @app.get('/child/{id}', response_class=HTMLResponse)
 def cardch(request: Request, id: int):
     con = get_db()
     cur = con.cursor()
-    cur.execute('SELECT * FROM childrens WHERE id = ?', (id,))
-    item = cur.fetchone()
-    return templates.TemplateResponse('card.html', {'request': request, 'item': item})
+    try:
+        cur.execute('SELECT * FROM childrens WHERE id = ?', (id,))
+        item = cur.fetchone()
+        if item is None:
+            raise HTTPException(status_code=404, detail="Item not found")
+        return templates.TemplateResponse('card.html', {
+            'request': request,
+            'item': dict(item)
+        })
+    except sqlite3.Error as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        con.close()
 
 @app.get('/meeting/{id}', response_class=HTMLResponse)
 def cardme(request: Request, id: int):
     con = get_db()
     cur = con.cursor()
-    cur.execute('SELECT * FROM meetings WHERE id = ?', (id,))
-    item = cur.fetchone()
-    return templates.TemplateResponse('card.html', {'request': request, 'item': item})
+    try:
+        cur.execute('SELECT * FROM meetings WHERE id = ?', (id,))
+        item = cur.fetchone()
+        if item is None:
+            raise HTTPException(status_code=404, detail="Item not found")
+        return templates.TemplateResponse('card.html', {
+            'request': request,
+            'item': dict(item)
+        })
+    except sqlite3.Error as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        con.close()
 
 @app.get("/admin", response_class=HTMLResponse)
 def admin_panel(request: Request, authenticated: bool = Depends(check_auth)):

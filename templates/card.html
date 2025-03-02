@@ -6,19 +6,25 @@
     <title>Афиша Якт</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', path='css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', path='css/kino.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/card.css') }}">
+    <style>
+        :root {
+            --bg-image: url('{{ item['url_image'] }}');
+        }
+        body {
+            background-color: #000;
+        }
+    </style>
 </head>
 <body>
-
     <header>
         <div class="logo">
-            
         </div>
         <div class="header-container">
             <div class="right-text-header">
-              <a href="index.html">
-                <img src="{{ url_for('static', path='images/logo.png') }}" alt="">
+              <a href="/">
+                <img src="{{ url_for('static', path='images/logo.png') }}" alt="Logo">
               </a>
                 <div class="dropdown">
                     <button class="btns btn-danger" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,8 +49,6 @@
                 <a href="{{ url_for('meeting') }}" class="textbtn">Сходки</a>
                 <div class="razdelenie"></div>
                 <a href="{{ url_for('child') }}" class="textbtn">Детям</a>
-                <div class="razdelenie"></div>
-                <a href="{{ url_for('additems') }}" class="textbtn">Добавить</a>
             </div>
             <div class="auth-container-header">
                 <a href="https://id.ykt.ru/page/login?return_url=https%3A%2F%2Fafisha.ykt.ru%2F" class="authbtn logbtn">Войти</a>
@@ -54,14 +58,109 @@
     </header>
     <main>
         <div class="card-container">
-            <img src="{{ item['url_image'] }}" alt="" class="obloga">
+            <img src="{{ item['url_image'] }}" alt="{{ item['title'] }}" class="obloga">
             <div class="card-body">
-                <p class="title">{{ item['title'] }}</p>
+                <h1 class="title">{{ item['title'] }}</h1>
                 <p class="descript">{{ item['description'] }}</p>
+                {% if item['commentary'] %}
+                <p class="commentary">{{ item['commentary'] }}</p>
+                {% endif %}
+                
+                <div class="card-info">
+                    {% if item['rating'] %}
+                    <div class="rating">
+                        {{ item['rating'] }}
+                    </div>
+                    {% endif %}
+                    {% if item['age_restriction'] %}
+                    <div class="age-restriction">
+                        {{ item['age_restriction'] }}
+                    </div>
+                    {% endif %}
+                    
+                    {% if item['date'] %}
+                    <div class="event-date">
+                        <i class="far fa-calendar"></i> {{ item['date'] }}
+                    </div>
+                    {% endif %}
+                    
+                    {% if item['time'] %}
+                    <div class="event-time">
+                        <i class="far fa-clock"></i> {{ item['time'] }}
+                    </div>
+                    {% endif %}
+                    
+                    {% if item['location'] %}
+                    <div class="event-location">
+                        <i class="fas fa-map-marker-alt"></i> {{ item['location'] }}
+                    </div>
+                    {% endif %}
+                    
+                    {% if item['price'] %}
+                    <div class="event-price">
+                        <i class="fas fa-ticket-alt"></i> {{ item['price'] }} ₽
+                    </div>
+                    {% endif %}
+                </div>
+
+                {% if item['ticket_url'] %}
+                <a href="{{ item['ticket_url'] }}" class="buy-tickets">Купить билеты</a>
+                {% else %}
+                <a href="#" class="buy-tickets">Купить билеты</a>
+                {% endif %}
+
+                <div class="trailer-section">
+                    <h2 class="trailer-title">Трейлер</h2>
+                    <div class="trailer-container">
+                        {% if item.get('trailer_url') %}
+                            <iframe 
+                                src="{{ item['trailer_url'] }}" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        {% else %}
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="reviews-section">
+                    <h2 class="reviews-title">Рецензии</h2>
+                    
+                    <div class="review">
+                        <div class="review-header">
+                            <span class="reviewer-name">Fo4iq</span>
+                            <span class="review-date">15 февраля 2024</span>
+                        </div>
+                        <p class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores sequi, corporis at repellendus quisquam officiis sunt nihil qui! Deleniti, consequatur!</p>
+                        <div class="review-rating">4.5</div>
+                    </div>
+
+                    <div class="review">
+                        <div class="review-header">
+                            <span class="reviewer-name">Beethow</span>
+                            <span class="review-date">14 февраля 2024</span>
+                        </div>
+                        <p class="review-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure quas voluptatum porro necessitatibus, provident quod.</p>
+                        <div class="review-rating">5.0</div>
+                    </div>
+
+                    <div class="review">
+                        <div class="review-header">
+                            <span class="reviewer-name">Mar4ik</span>
+                            <span class="review-date">13 февраля 2024</span>
+                        </div>
+                        <p class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                        <div class="review-rating">4.0</div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', path='js/main.js') }}"></script>
